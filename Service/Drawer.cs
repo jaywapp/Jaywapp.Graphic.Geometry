@@ -1,4 +1,5 @@
 ﻿using Jaywapp.Graphic.Geometry.Interface;
+using Jaywapp.Graphic.Geometry.Model;
 using SkiaSharp;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,13 @@ namespace Jaywapp.Graphic.Geometry.Service
     public class Drawer
     {
         #region Properties
-        public List<IGeometry> Geometries { get; set; } = new List<IGeometry>();
+        public List<Layer> Layers { get; } = new List<Layer>();
         #endregion
 
         #region Constructor
-        public Drawer(IEnumerable<IGeometry> geometries = null)
+        public Drawer(IEnumerable<Layer> layers = null)
         {
-            Geometries = geometries?.ToList() ?? new List<IGeometry>();
+            Layers = layers?.ToList() ?? new List<Layer>();
         }
         #endregion
 
@@ -32,12 +33,18 @@ namespace Jaywapp.Graphic.Geometry.Service
             {
                 surface.Canvas.Clear(SKColors.Black);
 
-                foreach (var geometry in Geometries)
-                    geometry.Draw(surface.Canvas);
+                foreach (var layer in Layers)
+                    layer.Draw(surface.Canvas);
             }
 
             bitmap.AddDirtyRect(new Int32Rect(0, 0, width, height));
             bitmap.Unlock();
+        }
+
+        public void Clear()
+        {
+            foreach(var layer in Layers)
+                layer.Clear();
         }
 
         private static SKSurface Create(WriteableBitmap bitmap)

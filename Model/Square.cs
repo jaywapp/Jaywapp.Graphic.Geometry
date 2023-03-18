@@ -3,13 +3,13 @@
     public class Square : Rectangle
     {
         #region Properties
-        public float SideLength { get; set; }
+        public float Length { get; set; }
         #endregion
 
         #region Constructor
-        public Square(float x, float y, float sideLength) : base(x, y, sideLength, sideLength)
+        public Square(float x, float y, float length) : base(x, y, length, length)
         {
-            SideLength = sideLength;
+            Length = length;
         }
         #endregion
     }

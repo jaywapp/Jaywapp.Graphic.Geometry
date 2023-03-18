@@ -43,6 +43,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Event\ColorChangeEventArgs.cs" />
+    <Compile Include="Event\IsVisibleChangeEventArgs.cs" />
     <Compile Include="Helper\SKHelper.cs" />
     <Compile Include="Interface\IGeometry.cs" />
     <Compile Include="Model\Arc.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="Model\Base\PlaneBase.cs" />
     <Compile Include="Model\Circle.cs" />
     <Compile Include="Model\Ellipse.cs" />
+    <Compile Include="Model\Layer.cs" />
     <Compile Include="Model\Polygon.cs" />
     <Compile Include="Model\Rectangle.cs" />
     <Compile Include="Model\Segment.cs" />
